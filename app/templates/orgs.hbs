@@ -1,7 +1,14 @@
-<h2>Organizations</h2>
+<h2>My Favorite Orgs</h2>
 
 <ul>
-  <li>{{link-to 'netflix' 'org.repos' 'netflix'}}</li>
+  {{#each content as |org|}}
+  <li>
+    <span {{action 'favoriteClicked' org}}>
+      [ Favorite ]
+    </span>
+    {{link-to org.id 'org' org.id}}
+  </li>
+  {{/each}}
 </ul>
 
 {{outlet}}

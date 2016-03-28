@@ -6,12 +6,16 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('orgs'); // orgs
-  this.route('org', { path: 'org/:id'}, function() { // org/netflix
-    this.route('repos'); // org/netflix/repos
-    this.route('repo', { path: ':repoid'}, function() { // org/netflix/hystrix
-      this.route('contributors'); // org/netflix/hystrix/contributors
-      this.route('issues'); // org/netflix/hystrix/issues
+  // List of orgs
+  this.route('orgs');
+  // Individual org
+  this.route('org', { path: 'org/:id'}, function() {
+    // List of repos
+    this.route('repos');
+    // Individual repo
+    this.route('repo', { path: ':repoid'}, function() {
+      this.route('contributors');
+      this.route('issues');
     });
   });
   this.route('not-found', { path: '*path' });
